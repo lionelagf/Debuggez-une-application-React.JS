@@ -16,9 +16,9 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue); // la nouvelle valeur est passée à la fonction onChange lorsque l'utilisateur sélectionne un élément de la liste.
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true); // setCollapsed est un booléen, on passe donc sa valeur à true pour la cloture après sélection.
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
