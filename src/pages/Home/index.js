@@ -116,12 +116,12 @@ const last = data?.events?.[data.events.length - 1]
         <div className='col presta'>
           <h3>Notre derniére prestation</h3>
           <EventCard
-            imageSrc={last?.cover}
-            imageAlt={last?.title}
-            title={last?.title}
+            imageSrc={last?.cover || ''}
+            imageAlt={last?.title || ''}
+            title={last?.title || ''}
             date={new Date(last?.date)}
             small
-            label={last?.type}
+            label={last?.type || ''}
           />
         </div>
         <div className='col contact'>
