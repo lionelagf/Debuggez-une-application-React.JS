@@ -57,7 +57,11 @@ const last = data?.events?.[data.events.length - 1]
           <h2 className='Title'>Nos réalisations</h2>
           <EventList />
         </section>
-        <section id='notre-equipe' className='PeoplesContainer'>
+        <section
+          id='notre-equipe'
+          className='PeoplesContainer'
+          data-testid='peoplesList'
+        >
           <h2 className='Title'>Notre équipe</h2>
           <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
           <div className='ListContainer'>
@@ -112,7 +116,7 @@ const last = data?.events?.[data.events.length - 1]
           </Modal>
         </div>
       </main>
-      <footer className='row'>
+      <footer className='row' data-testid='footer'>
         <div className='col presta'>
           <h3>Notre derniére prestation</h3>
           <EventCard
