@@ -34,15 +34,15 @@ const EventList = () => {
     <>
       {error && <div>An error occured</div>}
       {data === null ? (
-        "loading"
+        'loading'
       ) : (
         <>
-          <h3 className="SelectTitle">Catégories</h3>
+          <h3 className='SelectTitle'>Catégories</h3>
           <Select
             selection={Array.from(typeList)}
             onChange={(value) => changeType(value)}
           />
-          <div id="events" className="ListContainer">
+          <div id='events' className='ListContainer' data-testid='eventsList'>
             {filteredEvents.map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
@@ -57,10 +57,10 @@ const EventList = () => {
               </Modal>
             ))}
           </div>
-          <div className="Pagination">
+          <div className='Pagination'>
             {[...Array(pageNumber || 0)].map((_, n) => (
               // eslint-disable-next-line react/no-array-index-key
-              <a key={n} href="#events" onClick={() => setCurrentPage(n + 1)}>
+              <a key={n} href='#events' onClick={() => setCurrentPage(n + 1)}>
                 {n + 1}
               </a>
             ))}
@@ -68,7 +68,7 @@ const EventList = () => {
         </>
       )}
     </>
-  );
+  )
 };
 
 export default EventList;

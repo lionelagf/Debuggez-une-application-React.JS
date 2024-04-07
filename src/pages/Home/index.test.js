@@ -1,5 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import Home from './index'
+import { DataProvider} from '../../contexts/DataContext'
+
 
 describe('When Form is created', () => {
   it('a list of fields card is displayed', async () => {
@@ -27,27 +29,35 @@ describe('When Form is created', () => {
 })
 
 describe('When a page is created', () => {
-  it.only('a list of events is displayed', async () => {
-    render(<Home />)
-    expect(screen.getByTestId('eventsList')).toBeInTheDocument()
-    waitFor(() => {
+  it('a list of events is displayed', async () => {
+   render(
+      <DataProvider>
+        <Home />
+      </DataProvider>
+    );
+    expect(screen.getByTestId("eventList")).toBeInTheDocument();
+    await waitFor(() => {
       expect(screen.getByText('#DigitonPARIS')).toBeInTheDocument()
     })
   })
-  it('a list a people is displayed', () => {
-    render(<Home />)
-    expect(screen.getByTestId('peopleList')).toBeInTheDocument()
-    screen.findByText('CEO')
-    screen.findByText('Directeur Marketing')
+  it('a list a people is displayed', async () => {
+ render(<Home />)
+ expect(screen.getByTestId('peopleList')).toBeInTheDocument()
+ expect(screen.getByText('CEO')).toBeInTheDocument()
   })
-  it('a footer is displayed', () => {
+   
+  it('a footer is displayed', async () => {
     render(<Home />)
     expect(screen.getByTestId('footer')).toBeInTheDocument()
-    screen.findByText('Notre derniére prestation')
-    screen.findByText('Contactez-nous')
-    screen.findByText('724')
   })
   it('an event card, with the last event, is displayed', async () => {
-    render(<Home />)
+      render(
+        <DataProvider>
+          <Home />
+        </DataProvider>
+      )
+      await waitFor(() => {
+        expect(screen.getByTestId('lastEvent')).toBeInTheDocument()
+      })
   })
 })

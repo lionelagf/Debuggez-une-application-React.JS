@@ -14,7 +14,7 @@ import { useData } from '../../contexts/DataContext'
 
 const Page = () => {
   const { data } = useData()
-const last = data?.events?.[data.events.length - 1]
+  const last = data?.events?.[data.events.length - 1]
   return (
     <>
       <header>
@@ -53,14 +53,18 @@ const last = data?.events?.[data.events.length - 1]
             </ServiceCard>
           </div>
         </section>
-        <section id='nos-realisations' className='EventsContainer'>
+        <section
+          id='nos-realisations'
+          className='EventsContainer'
+          data-testid='peopleList'
+        >
           <h2 className='Title'>Nos réalisations</h2>
           <EventList />
         </section>
         <section
           id='notre-equipe'
           className='PeoplesContainer'
-          data-testid='peoplesList'
+          data-testid='peopleList'
         >
           <h2 className='Title'>Notre équipe</h2>
           <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
@@ -117,7 +121,7 @@ const last = data?.events?.[data.events.length - 1]
         </div>
       </main>
       <footer className='row' data-testid='footer'>
-        <div className='col presta'>
+        <div className='col presta' data-testid='lastEvent'>
           <h3>Notre derniére prestation</h3>
           <EventCard
             imageSrc={last?.cover || ''}
@@ -125,7 +129,7 @@ const last = data?.events?.[data.events.length - 1]
             title={last?.title || ''}
             date={new Date(last?.date)}
             small
-            label={last?.type || ''}
+            label={last?.type || 'boom'}
           />
         </div>
         <div className='col contact'>
