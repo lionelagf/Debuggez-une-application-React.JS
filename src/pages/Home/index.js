@@ -56,7 +56,7 @@ const Page = () => {
         <section
           id='nos-realisations'
           className='EventsContainer'
-          data-testid='peopleList'
+          data-testid='eventList'
         >
           <h2 className='Title'>Nos réalisations</h2>
           <EventList />
